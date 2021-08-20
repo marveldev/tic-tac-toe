@@ -2,6 +2,7 @@ body {
   background: #181A2F;
   font-family: 'Inconsolata', monospace;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .title {
@@ -64,6 +65,11 @@ body {
       align-items: center;
       justify-content: center;
       cursor: pointer;
+
+      &:active {
+        background: forestgreen;
+        // add animation change background color.
+      }
     }
   }
 }
