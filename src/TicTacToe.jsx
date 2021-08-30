@@ -5,7 +5,7 @@ import './ticTacToe.scss'
 const TicTacToe = () => {
   const [currentPlayer, setCurrentPlayer] = useState('x')
   const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""])
-  const [noOfWIns, setNoOfWins] = useState({playerX: 0, playerO: 0})
+  const [gameIsOver, setGameIsOver] = useState(false)
   
   const checkWinner = () => {
     for (let index = 0; index < patterns.length; index++) {
@@ -21,20 +21,22 @@ const TicTacToe = () => {
   const winner = checkWinner()
   
   const checkIfTie = () => {
-    let squareIsFilled = true
     for (let index = 0; index < squares.length; index++) {
-      if (squares[index] === "") squareIsFilled = false
+      if (squares[index] === "") {
+        return false
+      }
     }
-  
-    if (squareIsFilled && !winner) {
-        console.log('GAME IS TIE')
-    }
+    
+    if (!winner) return true
+    return null
   }
   
+  const gameIsTie = checkIfTie()
+  
   useEffect(() => {
-    console.log(winner)
-    checkIfTie()
-  },[checkIfTie, winner])
+    winner && setGameIsOver(true)
+    gameIsTie && setGameIsOver(true)
+  },[gameIsTie, winner])
   
   const addSquareValue = (square, index) => {
     if (square === "") {
@@ -58,9 +60,9 @@ const TicTacToe = () => {
             }
           </div>
           <div>
-            <span>{noOfWIns.playerX}</span>
+            <span>{0}</span>
             <span> : </span>
-            <span>{noOfWIns.playerO}</span>
+            <span>{0}</span>
           </div>
           <div>
             <p>Player 2</p>
@@ -76,6 +78,15 @@ const TicTacToe = () => {
           )}
         </div>
       </div>
+      {gameIsOver &&
+        <div>
+          <div className={"overlay"}/>
+          <div className={"modal"}>
+            <p>{winner ? winner + ' wins': 'THIS GAME IS A TIE'}</p>
+            <button>Continue</button>
+          </div>
+        </div>
+      }
     </div>
   )
 }

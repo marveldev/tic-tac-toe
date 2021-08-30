@@ -48,7 +48,7 @@ body {
     .active-player-bar {
       height: 0.2em;
       width: 100%;
-      background: #FFFF00FF;
+      background: #F4A246;
     }
   }
 
@@ -71,5 +71,44 @@ body {
         // add animation change background color.
       }
     }
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 70%;
+    background-color: #F4A246;
+    border-radius: 0.3em;
+    z-index: 1;
+
+    p {
+      font-size: 3.5em;
+      margin-top: 0;
+    }
+
+    button {
+      border: unset;
+      width: 10em;
+      height: 2.5em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: #0000007F;
   }
 }
