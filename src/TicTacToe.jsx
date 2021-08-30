@@ -6,6 +6,7 @@ const TicTacToe = () => {
   const [currentPlayer, setCurrentPlayer] = useState('x')
   const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""])
   const [gameIsOver, setGameIsOver] = useState(false)
+  const [score, setScore] = useState({playerX: 0, playerO: 0})
   
   const checkWinner = () => {
     for (let index = 0; index < patterns.length; index++) {
@@ -32,6 +33,12 @@ const TicTacToe = () => {
   }
   
   const gameIsTie = checkIfTie()
+  
+  const restartGame = () => {
+    setGameIsOver(false)
+    setCurrentPlayer('x')
+    setSquares(["", "", "", "", "", "", "", "", ""])
+  }
   
   useEffect(() => {
     winner && setGameIsOver(true)
@@ -82,8 +89,8 @@ const TicTacToe = () => {
         <div>
           <div className={"overlay"}/>
           <div className={"modal"}>
-            <p>{winner ? winner + ' wins': 'THIS GAME IS A TIE'}</p>
-            <button>Continue</button>
+            <p>{winner ? `${winner} wins` : `IT'S A TIE`}</p>
+            <button onClick={restartGame}>Continue</button>
           </div>
         </div>
       }
