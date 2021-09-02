@@ -59,24 +59,18 @@ const TicTacToe = () => {
       <h1 className={"title"}>Tic Tac Toe</h1>
       <div>
         <div className={"header"}>
-          <div>
+          <div className={currentPlayer === 'x' ? 'active-player' : ''}>
             <p>Player 1</p>
             <p>x</p>
-            {currentPlayer === 'x' &&
-              <div className={"active-player-bar"}/>
-            }
           </div>
           <div>
             <span>{0}</span>
             <span> : </span>
             <span>{0}</span>
           </div>
-          <div>
+          <div className={currentPlayer === 'O' ? 'active-player' : ''}>
             <p>Player 2</p>
             <p>O</p>
-            {currentPlayer === 'O' &&
-              <div className={"active-player-bar"}/>
-            }
           </div>
         </div>
         <div className={"content"}>

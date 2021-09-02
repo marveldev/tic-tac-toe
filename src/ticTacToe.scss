@@ -45,10 +45,8 @@ body {
       font-size: 2em;
     }
 
-    .active-player-bar {
-      height: 0.2em;
-      width: 100%;
-      background: #F4A246;
+    .active-player {
+      border-bottom: 0.25em solid #9ACD32;
     }
   }
 
@@ -65,10 +63,11 @@ body {
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: all 0.2s;
 
       &:active {
-        background: forestgreen;
-        // add animation change background color.
+        background: #9ACD32;
+        transition: 0s;
       }
     }
   }
@@ -84,7 +83,7 @@ body {
     transform: translate(-50%, -50%);
     width: 90%;
     height: 70%;
-    background-color: #F4A246;
+    background-color: #9ACD32;
     border-radius: 0.3em;
     z-index: 1;
 
