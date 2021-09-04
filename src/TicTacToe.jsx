@@ -43,6 +43,15 @@ const TicTacToe = () => {
   useEffect(() => {
     winner && setGameIsOver(true)
     gameIsTie && setGameIsOver(true)
+    if (winner === 'x') {
+      setScore(score => {
+        return {...score, playerX: score.playerX + 1}
+      })
+    } else if (winner === 'O') {
+      setScore(score => {
+        return {...score, playerO: score.playerO + 1}
+      })
+    }
   },[gameIsTie, winner])
   
   const addSquareValue = (square, index) => {
@@ -64,9 +73,9 @@ const TicTacToe = () => {
             <p>x</p>
           </div>
           <div>
-            <span>{0}</span>
+            <span>{score.playerX}</span>
             <span> : </span>
-            <span>{0}</span>
+            <span>{score.playerO}</span>
           </div>
           <div className={currentPlayer === 'O' ? 'active-player' : ''}>
             <p>Player 2</p>
